@@ -1,8 +1,8 @@
-import {Component} from 'react'
 // Write your code here
 
-class ActiveEventRegistrationDetails extends Component {
-  renderYetToRegisterView = () => (
+const ActiveEventRegistrationDetails = props => {
+  const {eventStatus} = props
+  const renderYetToRegisterView = () => (
     <div>
       <img
         src="https://assets.ccbp.in/frontend/react-js/events-register-img.png"
@@ -13,7 +13,7 @@ class ActiveEventRegistrationDetails extends Component {
     </div>
   )
 
-  renderRegisteredView = () => (
+  const renderRegisteredView = () => (
     <div>
       <img
         src="https://assets.ccbp.in/frontend/react-js/events-regestered-img.png"
@@ -23,7 +23,7 @@ class ActiveEventRegistrationDetails extends Component {
     </div>
   )
 
-  renderRegistrationClosedView = () => (
+  const renderRegistrationClosedView = () => (
     <div>
       <img
         src="https://assets.ccbp.in/frontend/react-js/events-registrations-closed-img.png"
@@ -34,25 +34,21 @@ class ActiveEventRegistrationDetails extends Component {
     </div>
   )
 
-  renderInitialView = () => (
+  const renderInitialView = () => (
     <div>
       <p>Click on an event, to view its registration details</p>
     </div>
   )
 
-  render() {
-    const {eventStatus} = this.props
-
-    switch (eventStatus) {
-      case 'YET_TO_REGISTER':
-        return this.renderYetToRegisterView()
-      case 'REGISTERED':
-        return this.renderRegisteredView()
-      case 'REGISTRATIONS_CLOSED':
-        return this.renderRegistrationClosedView()
-      default:
-        return this.renderInitialView()
-    }
+  switch (eventStatus) {
+    case 'YET_TO_REGISTER':
+      return renderYetToRegisterView()
+    case 'REGISTERED':
+      return renderRegisteredView()
+    case 'REGISTRATIONS_CLOSED':
+      return renderRegistrationClosedView()
+    default:
+      return renderInitialView()
   }
 }
 
